@@ -1,0 +1,31 @@
+#Sample Articles/Items
+#Barcode | Vendor | Title | Price
+#101010 | Michael | Gaming Mouse | 3,500
+#111111 | John | Molten Basketball | 1,500
+#100100 | Ben | Omnitrix | 10
+#110101 | Yel | Dinosaur Costume | 2,000
+#100111 | Balik | Milktea | 100
+#111000 | Kana | Rubberduck | 50
+#100001 | Naruto | Ramen | 75
+#101110 | Kendra | Dalandan Juice | 14
+#110010 | Oltum | Cellphone | 6900
+
+minPrice = int(input("Enter minimum price range: "))
+maxPrice = int(input("Enter maximum price range: "))
+articles = {3500: [101010, "Michael", "Gaming Mouse"],
+            1500: [111111, "John", "Molten Basketball"],
+            10: [100100, "Ben", "Omnitrix"],
+            2000: [110101, "Yel", "Dinosaur Costume"],
+            100: [100111, "Balik", "Milktea"],
+            50: [111000, "Kana", "Rubberduck"],
+            75: [100001, "Naruto", "Ramen"],
+            14: [101110, "Kendra", "Dalandan Juice"],
+            6900:[110010, "Oltum", "Cellphone"],
+            }
+for price in range(minPrice, maxPrice+1):
+    if price == minPrice:
+        print("Price: [Barcode, Vendor, Title]")
+    if articles.get(price) == None:
+        pass
+    else:
+        print(str(price) + ": " + str(articles[price]))
