@@ -1,0 +1,20 @@
+def addElement(arr):
+    elem = int(input("Enter the element you want to enter: "))
+    arr.append(elem)
+    print("Element successfully added. \nNew Array: ", arr)
+
+def extractSmallestNum(arr):
+    arr.sort()
+    print("Smallest element is", arr[0])
+    arr.pop(0)
+    print("Smallest element successfully extracted. \nNew array:", arr)
+
+arr = [7, 5, 3, 4]
+expression = int(input("Enter [1] to add element and Enter [2] to extract smallest number: "))
+print("Array before operation: ", arr)
+if expression is 1:
+    addElement(arr)
+elif expression is 2:
+    extractSmallestNum(arr)
+else:
+    print("Invalid command. Try again!")
