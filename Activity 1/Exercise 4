@@ -1,0 +1,70 @@
+# key1 | key2 | value(s)
+# lebron | goat | Michael's Birthday, Michael's Personal Data
+# 00007 | yellow | Yel's bank account
+# username | password | Someone's Personal Data
+# key1 | key2 | value1, value2, value3, value4
+
+biDictionary = {'lebron':{'goat': "Michael Birthday, Michael Personal Data"},
+                '00007':{'yellow': 'Yel bank account'},
+                "username": {"password": "Someone personal data"},
+                "key1": {"key2": "value1, value2, value3, value4"}}
+
+
+def bothKeysFunc():
+    firstKey = input("Enter first key: ")
+    secondKey = input("Enter second key: ")
+    found = False
+    for keys1 in biDictionary:
+        if keys1 == firstKey:
+            found = True
+            for keys2 in biDictionary[firstKey]:
+                if keys2 == secondKey:
+                    print("Value(s):", biDictionary[firstKey][secondKey])
+                else:
+                    print("[WARNING] Second key not found")
+    if not found:
+        print("[WARNING] First key not found")
+
+def firstKeyFunc():
+    firstKey = input("Enter first key: ")
+    found = False
+    for keys1 in biDictionary:
+        if keys1 == firstKey:
+            for keys2 in biDictionary[firstKey]:
+                if keys2 == None:
+                    pass
+                else:
+                    found = True
+                    print("Value(s):", biDictionary[firstKey][keys2])
+    if not found:
+        print("[WARNING] Key entered not found")
+
+def secondKeyFunc():
+    secondKey = input("Enter second key: ")
+    found = False
+    for keys in biDictionary:
+        for keys2 in biDictionary[keys]:
+            if secondKey == keys2:
+                found = True
+                print("Value(s):", biDictionary[keys][keys2])
+    if not found:
+        print("[WARNING] Key entered not found")
+
+def addKeyValueFunc():
+    firstKey = input("Enter first key: ")
+    secondKey = input("Enter second key: ")
+    value = input("Enter value: ")
+    biDictionary[firstKey] = {secondKey: value}
+    print("Key value added, new BiDictionary:", biDictionary)
+
+
+inp = int(input("Enter [1] to search using both keys\nEnter [2] to search using first key\nEnter [3] to search using second key\nEnter [4] to add key and value(s)\n"))
+com = {1: bothKeysFunc, 2: firstKeyFunc, 3:secondKeyFunc, 4:addKeyValueFunc}
+
+valid = False
+for keys in com:
+    if inp == keys:
+        com[inp]()
+        valid = True
+if not valid:
+    print("[WARNING] The number you entered is invalid. Please follow the instructions!")
