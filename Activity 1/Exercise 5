@@ -1,0 +1,69 @@
+with open("phones.txt") as file:
+    contents = file.read()
+
+cont = []
+names = []
+nickNames = []
+numbers = []
+word = []
+for c in contents:
+    cont.append(c)
+
+arrCtr = 0
+
+for i in range(len(cont)):
+    if (cont[i] is " "):
+        if (cont[i-1] is '|'):
+            pass
+        elif (cont[i+1] is not '|'):
+                word.append(cont[i])
+    elif cont[i] is "\n" or cont[i] is '|':
+        if arrCtr == 0:
+            names.append(nWord)
+        elif arrCtr == 1:
+            nickNames.append(nWord)
+        elif arrCtr == 2:
+            numbers.append(nWord)
+        word = []
+        arrCtr += 1
+    else:
+        word.append(cont[i])
+        nWord = "".join(word)
+
+    if cont[i] == '\n':
+        arrCtr = 0
+
+query = int(input("Please enter [1] to search using name\nPlease enter [2] to search using nickname\n"))
+
+x = 0
+found = False
+if query is 1:
+    searchName = input("Please enter a name: ")
+    for e in range(len(names)):
+        for c in range(len(names[e])):
+            if x == len(searchName):
+                print("Name was found!\n"
+                  "Name:",names[e],"\n"
+                  "Nickname:",nickNames[e],"\n"
+                  "Phone number:",numbers[e])
+                x = 0
+                found = True
+            if names[e][c] is searchName[x]:
+                x += 1
+            else:
+                x = 0
+    if not found:
+        print("The name you entered was not found")
+
+elif query is 2:
+    searchNickname = input("Please enter a nickname: ")
+    for e in range(len(nickNames)):
+        if nickNames[e] == searchNickname:
+            print("Nickname was found!\n"
+                  "Name:",names[e],"\n"
+                  "Nickname:",nickNames[e],"\n"
+                  "Phone number:",numbers[e])
+    if not found:
+        print("The nickname you entered was not found!")
+else:
+    print("[WARNING} Please follow the instructions and try again!")
